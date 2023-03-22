@@ -1,6 +1,7 @@
 package byvto.ru.calmsoul
 
 import android.graphics.Color
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
@@ -14,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val imageLogotype: ImageView = findViewById(R.id.imageLogotype)
         imageLogotype.setImageDrawable(
-            ContextCompat.getDrawable(this, R.drawable.tollev2)
+            ContextCompat.getDrawable(this, R.drawable.tollev_white)
         )
         imageLogotype.setOnClickListener {
             val contentScreen: ImageView = findViewById(R.id.contentScreen)
@@ -23,6 +24,17 @@ class MainActivity : AppCompatActivity() {
             randomText.setText(random[0].toString() + random[1].toString() + random[2].toString() + random[3].toString())
             val colorScreen = Color.argb(random[0], random[1], random[2], random[3])
             contentScreen.setBackgroundColor(colorScreen)
+
+            val afd = assets.openFd("0.ogg")
+            val player = MediaPlayer()
+            player.setDataSource(afd.fileDescriptor,afd.startOffset,afd.length);
+            player.prepare()
+            player.start()
+
         }
+
+
     }
+
+
 }

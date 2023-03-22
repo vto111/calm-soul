@@ -2,5 +2,6 @@
     <string name="app_name">Calm Soul</string>
     <string name="logotype">Logotype</string>
     <string name="contentScreen">Content screen</string>
-    <string name="textCS">12qwe312qwe312qwe312qwe312qwe312qwe312qwe312qwe312qwe312qwe312qwe312qwe312qwe312qwe312qwe312qwe312qwe312qwe312qwe312qwe312qwe312qwe312qwe312qwe312qwe312qwe312qwe312qwe312qwe312qwe3</string>
+    <string name="textCS">Краткое содержание</string>
+    <string name="textCS1">Что бы стать спокойным..</string>
 </resources>
