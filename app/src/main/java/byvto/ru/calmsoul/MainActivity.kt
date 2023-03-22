@@ -17,6 +17,10 @@ class MainActivity : AppCompatActivity() {
         imageLogotype.setImageDrawable(
             ContextCompat.getDrawable(this, R.drawable.tollev_white)
         )
+        val afd = assets.openFd("0.ogg")
+        val player = MediaPlayer()
+        player.setDataSource(afd.fileDescriptor,afd.startOffset,afd.length);
+        player.prepare()
         imageLogotype.setOnClickListener {
             val contentScreen: ImageView = findViewById(R.id.contentScreen)
             val random = List(4) { Random.nextInt(0, 255) }
@@ -25,10 +29,7 @@ class MainActivity : AppCompatActivity() {
             val colorScreen = Color.argb(random[0], random[1], random[2], random[3])
             contentScreen.setBackgroundColor(colorScreen)
 
-            val afd = assets.openFd("0.ogg")
-            val player = MediaPlayer()
-            player.setDataSource(afd.fileDescriptor,afd.startOffset,afd.length);
-            player.prepare()
+
             player.start()
 
         }
