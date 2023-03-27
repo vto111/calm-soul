@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import java.io.IOException
 import kotlin.random.Random
+import kotlin.reflect.typeOf
 
 class MainActivity(var fileOggName: String = "0", var list: Array<out String>? = emptyArray(), var randomNumbers: List<out Int>? = emptyList()) : AppCompatActivity() {
 
@@ -21,6 +22,7 @@ class MainActivity(var fileOggName: String = "0", var list: Array<out String>? =
             imageLogotype.setImageDrawable(
                 ContextCompat.getDrawable(this, R.drawable.tollev_white)
             )
+            list = assets.list("ogg")
             getRadom()
             clickLogo(imageLogotype, initMPlayer())
 
@@ -30,12 +32,12 @@ class MainActivity(var fileOggName: String = "0", var list: Array<out String>? =
 
     }
     fun getRadom() {
-        val countOgg = list?.count()?.toString()
-        countOgg?.let {
-            randomNumbers = List(2) { Random.nextInt(0, 3) }
-            println(it.toInt())
-
+        val countOgg = list?.count()?.toString()!!.toInt()
+        println(countOgg)
+        if(countOgg != 0){
+            randomNumbers = List(2) { Random.nextInt(0, countOgg) }
         }
+
 
     }
     fun setFileOgg(){
